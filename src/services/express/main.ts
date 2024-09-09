@@ -2,7 +2,6 @@ import { getUser } from "../firebase/main";
 import { sendTweet } from "../pupetter/main";
 export const listen = async () => {
   const express = (await import("express")).default;
-
   const app = express();
   app.use(express.json());
   const port = process.env.PORT ?? 3000;

@@ -4,7 +4,7 @@ const fakePromise = (timer: number) =>
   new Promise((resolve) => setTimeout(() => resolve(true), timer));
 
 export const sendTweet = async (cookies: any, content: string) => {
-  const browser = await puppeteer.launch({ headless: false });
+  const browser = await puppeteer.launch();
   const page = (await browser.pages())[0];
   page.setCookie(...cookies);
 
