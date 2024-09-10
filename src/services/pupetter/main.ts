@@ -5,6 +5,7 @@ const fakePromise = (timer: number) =>
 
 export const sendTweet = async (cookies: any, content: string) => {
   const browser = await puppeteer.launch({
+    executablePath: "/usr/bin/chromium-browser",
     args: [
       "--disable-gpu",
       "--disable-setuid-sandbox",
