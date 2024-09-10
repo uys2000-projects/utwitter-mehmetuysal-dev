@@ -1,6 +1,6 @@
-FROM node
+FROM node:alpine
 
-RUN apt-get install chromium-browser chromium-codecs-ffmpeg
+RUN apk add chromium
 
 WORKDIR /app
 
