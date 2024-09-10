@@ -6,6 +6,6 @@ WORKDIR /app
 
 COPY dist .
 
-CMD [ "yarn", "start" ]
+CMD [ "node", "cjs" ]
 
 EXPOSE 3000
