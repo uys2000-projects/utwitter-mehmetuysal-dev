@@ -1,10 +1,17 @@
-import puppeteer, { CookieSameSite } from "puppeteer";
+import puppeteer from "puppeteer";
 
 const fakePromise = (timer: number) =>
   new Promise((resolve) => setTimeout(() => resolve(true), timer));
 
 export const sendTweet = async (cookies: any, content: string) => {
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({
+    args: [
+      "--disable-gpu",
+      "--disable-setuid-sandbox",
+      "--no-sandbox",
+      "--no-zygote",
+    ],
+  });
   const page = (await browser.pages())[0];
   await page.setCookie(...cookies);
 
