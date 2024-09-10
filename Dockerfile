@@ -1,6 +1,6 @@
 FROM node:slim
 
-RUN apt install chromium-browser chromium-codecs-ffmpeg
+RUN apt-get install chromium-browser chromium-codecs-ffmpeg
 
 WORKDIR /app
 
