@@ -4,7 +4,7 @@ RUN apk add chromium
 
 WORKDIR /app
 
-COPY . .
+COPY .dist .
 
 CMD [ "yarn", "start" ]
 
