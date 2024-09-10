@@ -6,6 +6,6 @@ WORKDIR /app
 
 COPY dist .
 
-CMD [ "node", "cjs" ]
+CMD [ "node", "main.cjs" ]
 
 EXPOSE 3000
