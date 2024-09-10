@@ -1,4 +1,4 @@
-FROM node:slim
+FROM node
 
 RUN apt-get install chromium-browser chromium-codecs-ffmpeg
 
