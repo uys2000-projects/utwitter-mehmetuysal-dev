@@ -1,8 +1,11 @@
-import puppeteer from "puppeteer";
+import puppeteer, { Browser } from "puppeteer";
+
+const browsers = [] as Browser[];
+export const closeBrowsers = () =>
+  browsers.forEach((browser) => browser.close());
 
 const fakePromise = (timer: number) =>
   new Promise((resolve) => setTimeout(() => resolve(true), timer));
-
 export const sendTweet = async (cookies: any, content: string) => {
   const browser = await puppeteer.launch({
     executablePath: "/usr/bin/chromium-browser",
@@ -13,6 +16,7 @@ export const sendTweet = async (cookies: any, content: string) => {
       "--no-zygote",
     ],
   });
+  browsers.push(browser);
   const page = (await browser.pages())[0];
   await page.setCookie(...cookies);
 

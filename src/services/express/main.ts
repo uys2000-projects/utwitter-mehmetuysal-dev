@@ -1,5 +1,5 @@
 import { getUser } from "../firebase/main";
-import { sendTweet } from "../pupetter/main";
+import { closeBrowsers, sendTweet } from "../pupetter/main";
 export const listen = async () => {
   const express = (await import("express")).default;
   const app = express();
@@ -21,7 +21,12 @@ export const listen = async () => {
     if (!data) return res.status(404).send("User data not found");
 
     const r = await sendTweet(JSON.parse(data.user), req.body.content).catch(
-      (err) => console.log("Error:", err)
+      (err) => {
+        setTimeout(() => {
+          closeBrowsers();
+        }, 100);
+        console.log("Error:", err);
+      }
     );
     if (r) return res.status(200).send("success");
     else return res.status(500).send("Error sending tweet");
