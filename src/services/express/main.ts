@@ -6,6 +6,10 @@ export const listen = async () => {
   app.use(express.json());
   const port = process.env.PORT ?? 3000;
 
+  app.get("/", async (req, res) => {
+    res.send("Runing...");
+  });
+
   app.post("/", async (req, res) => {
     if (!req.body.id) return res.status(401).send("Id not found");
     if (!req.body.content) return res.status(401).send("Content not found");
